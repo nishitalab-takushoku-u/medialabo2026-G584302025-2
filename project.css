@@ -1,0 +1,24 @@
+h1{
+    color: rgb(143, 143, 143);
+	text-shadow: rgb(0, 255, 238) 1px 0 10px;
+    font-weight: bold;
+    border-bottom: dotted 10px;
+    padding: 10px;
+}
+h2{
+    background-color:#eeeeee;
+    padding: 20px 20px 20px 20px;
+}
+.store{
+    border-bottom: dotted;
+    padding: 10px;
+}
+li{
+    list-style-type: none;  
+    padding: 5px;
+}
+ul {
+    border: dashed rgb(123, 212, 206);
+    background-color: #eeeeee;
+    padding: 5px;
+}
