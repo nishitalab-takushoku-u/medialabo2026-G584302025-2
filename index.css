@@ -1,0 +1,24 @@
+h1{
+    color: rgb(143, 143, 143);
+	text-shadow: rgb(0, 255, 238) 1px 0 10px;
+    font-weight: bold;
+    border-bottom: dotted 10px;
+    padding: 10px;
+}
+h2{
+    background-color:#eeeeee;
+    padding: 10px 10px 10px 10px;
+}
+h3{
+    border-bottom: dotted rgb(123, 212, 206);
+    padding: 5px;
+}
+a:link {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  text-decoration: none;
+}
