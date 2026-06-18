@@ -1,7 +1,21 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
 function print(data) {
-
+  let y=1;
+  for(let x of data.results.shop){
+    console.log('検索結果'+y+'件目');
+    console.log('店舗名：'+x.name);
+    console.log('キャッチコピー：'+x.catch);
+    console.log(x.child);
+    console.log('予算：'+x.budget.name);
+    console.log('営業時間：'+x.open);
+    console.log(x.close);
+    console.log('お店で使えるクーポン→'+x.coupon_urls);
+    console.log('アクセス：'+x.mobile_access);
+    console.log('住所：'+x.address);
+    console.log('ジャンル：'+x.genre.name);
+    y=y+1;
+  }
 }
 
 // 課題5-1 の関数 printDom() はここに記述すること
