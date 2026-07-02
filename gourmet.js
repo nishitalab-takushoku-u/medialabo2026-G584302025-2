@@ -1,6 +1,6 @@
 
 // 課題3-2 のプログラムはこの関数の中に記述すること
-function print(data) {
+/*function print(data) {
   let y=1;
   for(let x of data.results.shop){
     console.log('検索結果'+y+'件目');
@@ -17,11 +17,51 @@ function print(data) {
     y=y+1;
   }
 }
-
+let i = document.querySelector('input[name="key"]');
+i.getAttribute('name');
+console.log(i.value);
+*/
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
-
+  let div = document.createElement('div');
+  let body = document.querySelector('body');
+  body.insertAdjacentElement('beforeend',div);
+  div.setAttribute('id','result');
+  let span = document.querySelector('span#kensu');
+  span.textContent = data.results.shop.length;
+  for(let x of data.results.shop){
+    let h2 = document.createElement('h2');
+    div.insertAdjacentElement('beforeend',h2);
+    h2.textContent = x.name;
+    let a = document.createElement('ul');
+	  h2.insertAdjacentElement('afterend',a);
+		let p = document.createElement('li');
+    p.setAttribute('class','store');
+		a.insertAdjacentElement('beforeend',p);
+    p.textContent = '店舗名：'+x.name;
+    p = document.createElement('li');
+    a.insertAdjacentElement('beforeend',p);
+    p.textContent = 'キャッチコピー：'+x.catch;
+    a.insertAdjacentElement('beforeend',p);
+    p = document.createElement('li');
+    p.textContent = '予算：'+x.budget.name;
+    a.insertAdjacentElement('beforeend',p);
+    p = document.createElement('li');
+    p.textContent = '営業時間：'+x.open;
+    a.insertAdjacentElement('beforeend',p);
+    p = document.createElement('li');
+    p.textContent = x.close;
+    a.insertAdjacentElement('beforeend',p);
+    p = document.createElement('li');
+    p.textContent = 'アクセス：'+x.mobile_access;
+    a.insertAdjacentElement('beforeend',p);
+    p = document.createElement('li');
+    p.textContent = '住所：'+x.address;
+    a.insertAdjacentElement('beforeend',p);
+  }
 }
+//上のやつを新しく作るdiv#resultの中に入れる
+//第一回のhtml要素を消す
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 
