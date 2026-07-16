@@ -1,3 +1,26 @@
+input {
+    padding: 5px;
+    font-size: 16px;
+}
+button{
+    padding: 5px,10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: rgb(90, 180, 184);
+    cursor: pointer;
+}
+body{
+    margin: 30px;
+}
+#kensu{
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    text-shadow:1px 1px 1px rgb(17, 219, 216),2px 2px 1px rgb(17, 219, 216);
+}
 h1{
     color: rgb(143, 143, 143);
 	text-shadow: rgb(0, 255, 238) 1px 0 10px;
@@ -7,7 +30,8 @@ h1{
 }
 h2{
     background-color:#eeeeee;
-    padding: 20px 20px 20px 20px;
+    padding: 15px;
+    border-radius: 8px;
 }
 .store{
     border-bottom: dotted;
@@ -22,5 +46,17 @@ li{
 ul {
     border: dashed rgb(123, 212, 206);
     background-color: #eeeeee;
-    padding: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+.genre{
+    border: solid 2px rgb(123, 212, 206);
+    background-color: white;
+    padding: 25px;
+    width: 350px;
+    border-radius: 8px;
+}
+.genre li{
+    list-style-type: disc;
+    padding: 2px;
 }

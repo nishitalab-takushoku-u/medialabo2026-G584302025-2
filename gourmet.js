@@ -23,6 +23,11 @@ console.log(i.value);
 */
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  // 前回の検索結果を削除
+  let old = document.querySelector("#result");
+    if (old != null) {
+      old.remove();
+    }
   let div = document.createElement('div');
   let body = document.querySelector('body');
   body.insertAdjacentElement('beforeend',div);
@@ -50,7 +55,7 @@ function printDom(data) {
     p.textContent = '営業時間：'+x.open;
     a.insertAdjacentElement('beforeend',p);
     p = document.createElement('li');
-    p.textContent = x.close;
+    p.textContent = '定休：'+x.close;
     a.insertAdjacentElement('beforeend',p);
     p = document.createElement('li');
     p.textContent = 'アクセス：'+x.mobile_access;
@@ -64,20 +69,29 @@ function printDom(data) {
 //第一回のhtml要素を消す
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
-
-
+let b = document.querySelector('#kensaku');
+b.addEventListener('click',sendRequest);
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-
+  let genre = document.querySelector('#key').value//'G001'~'G017'
+	// URL を設定
+	let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+genre+'.json';
+	// 通信開始
+	axios.get(url)
+		.then(showResult)
+		.catch(showError)
+		.then(finish);
 }
-
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
-
+	// サーバから送られてきたデータを出力
+	let data = resp.data;
+	// data が文字列型なら，オブジェクトに変換する
+	if (typeof data === 'string') {
+		data = JSON.parse(data);
+	}
+	printDom(data);
 }
-
 // 課題6-1: 通信エラーが発生した時の処理
 function showError(err) {
     console.log(err);
@@ -92,7 +106,7 @@ function finish() {
 // 以下はグルメのデータサンプル
 // 注意: 第5回までは以下を変更しないこと！
 // 注意2: 課題6-1 で以下をすべて削除すること
-let data = {
+/*let data = {
   "results": {
     "api_version": "1.26",
     "results_available": 52,
@@ -292,4 +306,4 @@ let data = {
     ]
   }
 };
-
+*/
