@@ -1,11 +1,20 @@
-input {
-    padding: 5px;
+label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+select {
+    width: 220px;
+    padding: 8px;
     font-size: 16px;
+    border: 2px solid rgb(123, 212, 206);
+    border-radius: 10px;
+    background-color: white;
 }
 button{
     background-color: rgb(90, 180, 184);
     color: white;
-    padding: 8px,18px;
+    padding: 8px 18px;
     font-size: 18px;
     border: none;
     border-radius: 20px;
@@ -32,38 +41,39 @@ h1{
     border-bottom: dotted 10px;
     padding: 10px;
 }
-h2{
+details{
+    margin-bottom: 15px;
+}
+summary{
     background-color:rgb(123, 212, 206);
     color: white;
-    padding: 10px;
+    padding: 12px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+details[open] summary{
     border-radius: 20px 20px 0 0;
 }
 .store{
     border-bottom: dotted;
     padding: 10px;
-    font: 1.2em "fantasy";
+    font-size: 1.2em ;
+    font-weight: bold;
 }
-
 li{
     list-style-type: none;  
     padding: 5px;
 }
 ul {
+    margin-top: 0;
     border: none;
     background-color: #f8ffff;
     padding: 15px;
     margin-bottom: 25px;
     border-left: 8px solid rgb(123, 212, 206);
     box-shadow: 3px 3px 8px lightgrey;
-}
-.genre{
-    border: solid 2px rgb(123, 212, 206);
-    background-color: white;
-    padding: 25px;
-    width: 350px;
-    border-radius: 8px;
-}
-.genre li{
-    list-style-type: disc;
-    padding: 2px;
 }

@@ -25,44 +25,41 @@ console.log(i.value);
 function printDom(data) {
   // 前回の検索結果を削除
   let old = document.querySelector("#result");
-    if (old != null) {
-      old.remove();
-    }
+  if (old != null) {
+    old.remove();
+  }
   let div = document.createElement('div');
   let body = document.querySelector('body');
-  body.insertAdjacentElement('beforeend',div);
-  div.setAttribute('id','result');
+  body.insertAdjacentElement('beforeend', div);
+  div.setAttribute('id', 'result');
   let span = document.querySelector('span#kensu');
   span.textContent = data.results.shop.length;
-  for(let x of data.results.shop){
-    let h2 = document.createElement('h2');
-    div.insertAdjacentElement('beforeend',h2);
-    h2.textContent = x.name;
-    let a = document.createElement('ul');
-	  h2.insertAdjacentElement('afterend',a);
-		let p = document.createElement('li');
-    p.setAttribute('class','store');
-		a.insertAdjacentElement('beforeend',p);
-    p.textContent = '店舗名：'+x.name;
+  for (let x of data.results.shop) {
+    let details = document.createElement('details');
+    let summary = document.createElement('summary');
+    summary.textContent = x.name;
+    details.appendChild(summary);//detailsの中にsummaryを追加する
+    let ul = document.createElement('ul');
+    let p = document.createElement('li');
+    ul.appendChild(p);//pをulの中に追加する
+    p.textContent = 'キャッチコピー：' + x.catch;
     p = document.createElement('li');
-    a.insertAdjacentElement('beforeend',p);
-    p.textContent = 'キャッチコピー：'+x.catch;
-    a.insertAdjacentElement('beforeend',p);
+    ul.appendChild(p);
+    p.textContent = '予算：' + x.budget.name;
     p = document.createElement('li');
-    p.textContent = '予算：'+x.budget.name;
-    a.insertAdjacentElement('beforeend',p);
+    ul.appendChild(p);
+    p.textContent = '営業時間：' + x.open;
     p = document.createElement('li');
-    p.textContent = '営業時間：'+x.open;
-    a.insertAdjacentElement('beforeend',p);
+    ul.appendChild(p);
+    p.textContent = '定休：' + x.close;
     p = document.createElement('li');
-    p.textContent = '定休：'+x.close;
-    a.insertAdjacentElement('beforeend',p);
+    ul.appendChild(p);
+    p.textContent = 'アクセス：' + x.mobile_access;
     p = document.createElement('li');
-    p.textContent = 'アクセス：'+x.mobile_access;
-    a.insertAdjacentElement('beforeend',p);
-    p = document.createElement('li');
-    p.textContent = '住所：'+x.address;
-    a.insertAdjacentElement('beforeend',p);
+    ul.appendChild(p);
+    p.textContent = '住所：' + x.address;
+    details.appendChild(ul);//ulをdetailの中に追加する
+    div.appendChild(details);
   }
 }
 //上のやつを新しく作るdiv#resultの中に入れる
@@ -70,36 +67,36 @@ function printDom(data) {
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
 let b = document.querySelector('#kensaku');
-b.addEventListener('click',sendRequest);
+b.addEventListener('click', sendRequest);
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
   let genre = document.querySelector('#key').value//'G001'~'G017'
-	// URL を設定
-	let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/'+genre+'.json';
-	// 通信開始
-	axios.get(url)
-		.then(showResult)
-		.catch(showError)
-		.then(finish);
+  // URL を設定
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/hotpepper/' + genre + '.json';
+  // 通信開始
+  axios.get(url)
+    .then(showResult)
+    .catch(showError)
+    .then(finish);
 }
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
-	// サーバから送られてきたデータを出力
-	let data = resp.data;
-	// data が文字列型なら，オブジェクトに変換する
-	if (typeof data === 'string') {
-		data = JSON.parse(data);
-	}
-	printDom(data);
+  // サーバから送られてきたデータを出力
+  let data = resp.data;
+  // data が文字列型なら，オブジェクトに変換する
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
+  printDom(data);
 }
 // 課題6-1: 通信エラーが発生した時の処理
 function showError(err) {
-    console.log(err);
+  console.log(err);
 }
 
 // 課題6-1: 通信の最後にいつも実行する処理
 function finish() {
-    console.log('Ajax 通信が終わりました');
+  console.log('Ajax 通信が終わりました');
 }
 
 ////////////////////////////////////////
